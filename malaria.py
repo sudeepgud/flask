@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,render_template
 from PIL import Image
 import numpy as np
 import tensorflow as tf
@@ -22,9 +22,11 @@ def preprocess_image(image):
 
     return image_array
 
+@app.route('/',methods=['GET'])
+def home():
+    return render_template('home.html')
 
-
-@app.route('/predict', methods=['POST','GET'])
+@app.route('/predict', methods=['POST'])
 def predict():
     file = request.files['image']
     img_bytes = file.read()
