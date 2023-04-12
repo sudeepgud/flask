@@ -22,9 +22,8 @@ def preprocess_image(image):
 
     return image_array
 
-@app.route('/predict', methods=['POST','GET'])
+@app.route('/predict', methods=['POST'])
 def predict():
-    return render_template('home.html')
     file = request.files['image']
     img_bytes = file.read()
     img_array = np.frombuffer(img_bytes, dtype=np.uint8)
