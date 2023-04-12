@@ -24,7 +24,7 @@ def preprocess_image(image):
 
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST','GET'])
 def predict():
     file = request.files['image']
     img_bytes = file.read()
